@@ -1,0 +1,193 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý đặt lịch GD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(0deg 0% 100%)'
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 240 5.9% 10%;
+--primary-foreground: 0 0% 98%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 240 5.9% 10%;
+--radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--primary: 0 0% 98%;
+--primary-foreground: 240 5.9% 10%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 240 4.9% 83.9%;
+            }
+        }
+        .grid-page {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin-top: 30px ;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .arrow {
+            font-size: 30px;
+            color: #ef4444;
+            margin: 0 6px;
+        }
+        .page__item {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #ef4444;
+            margin: 0 4px;
+            color: #fff;
+        }
+        .page__item:hover,
+            .arrow:hover {
+            opacity: 0.8;
+        }
+
+        .active_menu-6{
+            padding:10px;
+            background:red;
+            border-radius:16px;
+        }
+    </style>
+</head>
+<body>
+<section style="min-height:550px" layout:fragment="content">
+    <div class="py-4 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-semibold mb-4">User Statistics</h1>
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-border sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-border">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">Family Name</th>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">Last Name</th>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">Class</th>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">Faculty</th>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">School</th>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">Student Code</th>
+                                <th class="px-6 py-3 text-left text-sm font-medium text-primary-foreground uppercase tracking-wider">Conference Name</th>
+                            </tr>
+                        </thead>
+                        <tbody style="color:#000" class="bg-card divide-y divide-border">
+                            <tr th:each="item : ${hoithaos}">
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.familyName}"></td>
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.lastName}"></td>
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.myClass}"></td>
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.faculty}"></td>
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.school}"></td>
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.studentCode}"></td>
+                                <td class="px-6 py-4 whitespace-nowrap" th:text="${item.hoiThao.title}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="grid-page" th:if="${totalPages > 1}">
+        <ul class="flex">
+            <li th:class="${hoithaos.hasPrevious() ? '' :'disabled'}">
+                <a class="arrow" th:href="@{/home/qlDLHT?page=__${hoithaos.number-1}__}">
+                    <span>&laquo;</span>
+                </a>
+            </li>
+            <li th:each="page : ${#numbers.sequence(0,totalPages - 1)}"
+                th:class="${hoithaos.number == page ? 'active' : ''}" >
+                <a class="page__item"
+                   th:href="@{/home/qlDLHT?page=__${page}__}"
+                   th:text="${page + 1}"></a>
+            </li>
+            <li th:class="${hoithaos.hasNext() ? '' : 'disabled'}">
+                <a class="arrow" th:href="@{/home/qlDLHT?page=__${hoithaos.number+1}__}">
+                    <span>&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>
+</body>
+</html>

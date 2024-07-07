@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title th:fragment="title">Layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .item_menu::before {
+            position: absolute;
+            content: "";
+            display: block;
+            border-width: 6px 48px;
+            border-style: solid;
+            border-color: transparent;
+            top: -10px;
+            right:0;
+        }
+        .btn_show-menu:hover .show_menu{
+            display:block;
+        }
+        .item_menu:hover {
+            background:#f8105ce3;
+        }
+
+        active_menu-4{
+            padding:10px;
+            background:red;
+            border-radius:16px;
+        }
+    </style>
+</head>
+<body>
+<div class="bg-zinc-900 text-white">
+    <header class="bg-red-700 p-4 flex justify-between items-center">
+        <a th:href="@{/home}" class="text-2xl font-bold">E-Tick</a>
+        <div class="text-sm">HUTECH - Trường đại học công nghệ Tp.HCM</div>
+        <div class="flex space-x-4" sec:authorize="!isAuthenticated()">
+            <a style="text-decoration:none;" th:href="@{/login}" class="bg-white text-black px-4 py-2 rounded">
+                Đăng nhập
+            </a>
+            <a style="text-decoration:none;" th:href="@{/register}" class="bg-white text-black px-4 py-2 rounded">
+                Đăng kí
+            </a>
+        </div>
+        <div class="flex justify-end items-center p-4" sec:authorize="isAuthenticated()">
+            <div class="relative btn_show-menu">
+                <button style="background:#000" sec:authentication="name" class=" text-primary-foreground px-4 py-2 rounded-lg shadow-md hover:bg-primary/80 transition-colors"></button>
+                <div style="z-index:1;background:#000" class="show_menu absolute right-0 mt-2 w-48 shadow-lg rounded-lg hidden">
+                    <ul class=" py-1">
+                        <li><a th:href="@{/user/profile}" class="item_menu block px-4 py-2 text-card-foreground ">Trang cá nhân</a></li>
+                        <li><a th:href="@{/home/changePW}" class=" item_menu block px-4 py-2 text-card-foreground ">Đổi mật khẩu</a></li>
+                        <li><a th:href="@{/home/myTicket}" class=" item_menu block px-4 py-2 text-card-foreground ">Lịch sử đặt vé</a></li>
+                        <li>
+                            <form th:action="@{/logout}" method="post" >
+                                <button style="width:100%;text-align:left" class=" item_menu block px-4 py-2 text-card-foreground" type="submit">Đăng xuất</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="bg-black p-2 flex justify-between items-center">
+        <div style="align-items:center" class="flex space-x-4">
+            <a th:href="@{/home/hoithao}" class="text-white active_menu-a">Hội thảo</a>
+            <a th:href="@{/home/giaidau}" class="text-white active_menu-b">Giải đấu</a>
+            <a th:href="@{/home/liveshow}" class="text-white active_menu-c">Liveshow</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/addHT}" class="text-white active_menu-1">Thêm mới hội thảo</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlUser}" class="text-white active_menu-2">Quản lý user</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlHT}" class="text-white active_menu-3">Quản lý hội thảo</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlGD}" class="text-white active_menu-4">Quản lý giải đấu</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlLS}" class="text-white active_menu-5">Quản lý liveshow</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlDLHT}" class="text-white active_menu-6">Thống kê đặt lịch HT</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlDLGD}" class="text-white active_menu-7">Thống kê đặt lịch GĐ</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/home/qlDLLS}" class="text-white active_menu-8">Thống kê đặt lịch LS</a>
+        </div>
+        <form th:action="${#authorization.expression('hasAnyAuthority(''ADMIN'')') ?
+                        '/home/searchHome' : '/home/searchHome'}"  class="relative">
+            <input name="title"
+                   type="search"
+                   placeholder="Aa"
+                   class="bg-zinc-800 text-white p-2 rounded" />
+            <button type="submit" class="absolute right-2 top-2 text-white">🔍</button>
+        </form>
+    </nav>
+    <div>
+        <section layout:fragment="content">
+            <!-- Content will be inserted here -->
+        </section>
+    </div>
+    <footer class="bg-black p-4 text-center">
+        <div class="text-xl font-bold">E-Tick</div>
+        <div class="text-sm">
+            Copyright © 2024 - E-Tick. All Rights Reserved
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+html{
+    height:100%;
+}
+body{
+    height:100%
+}
+.bg-zinc-900 {
+    height:100%;
+}
+footer{
+    bottom: 0;
+    width: 100%;
+    position: relative;
+}

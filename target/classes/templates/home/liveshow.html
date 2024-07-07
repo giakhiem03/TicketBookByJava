@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"  >
+<head>
+    <meta charset="UTF-8">
+    <title>LiveShow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/CSS/style.css}">
+    <style>
+        .grid-page {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin-top: 30px ;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .arrow {
+            font-size: 30px;
+            color: #ef4444;
+            margin: 0 6px;
+        }
+        .page__item {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #ef4444;
+            margin: 0 4px;
+            color: #fff;
+        }
+        .page__item:hover,
+            .arrow:hover {
+            opacity: 0.8;
+        }
+
+        .active_menu-c {
+            background:red;
+            border-radius:16px;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <main style="min-height:510px;background:#18181b" class="p-4">
+        <div>
+            <img  th:src="@{/images/imageLiveShow.png}" alt="image">
+        </div>
+        <h1 class="text-2xl font-bold mb-4">LiveShow</h1>
+        <div class="flex space-x-4">
+            <div class="flex-1 space-y-4">
+                <div style="background:#18181b"  class="flex p-4 rounded-lg shadow-md" th:each="item : ${liveshows}">
+                        <img style="width:150px;height:100px" th:src="@{/images/{image}(image=${item.image})}" alt="Event Image" class="rounded-md" />
+                        <div class="ml-4 flex-1">
+                            <h2 class="text-lg font-bold" th:text="${item.title}"></h2>
+                            <p class="text-muted-foreground" th:text="${item.detail}"></p>
+                            <div class="flex items-center space-x-2 mt-2">
+                                <span>🕒</span>
+                                <span class="text-sm" th:text="${item.time}"></span>
+                                <span>📍</span>
+                                <span class="text-sm" th:text="${item.address}"></span>
+                                <span>👤</span>
+                                <span class="text-sm" th:text="${item.seatNumber}"></span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <div style="padding:6px" th:if="${item.price}>0">
+                                <span  class="text-red-500 font-bold" th:text="${item.price}"></span>
+                            </div>
+                            <div style="padding:6px" th:unless="${item.price>0}">
+                                <span class="text-red-500 font-bold" >Free</span>
+                            </div>
+                            <a th:href="@{/home/tick/{id}(id=${item.id})}" class="bg-primary text-primary-foreground p-2 rounded-md">Tick</a>
+                        </div>
+                </div>
+            </div>
+            <form th:action="@{/home/searchLS}" method="get" class="w-1/4 bg-card p-4 rounded-lg shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-bold">Sắp xếp</span>
+                    <button type="submit" class="bg-secondary text-secondary-foreground p-2 rounded-md">🔄</button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Chi phí</label>
+                        <select name="checkPrice" style="color:#000" class="bg-input p-2 rounded-md w-full">
+                            <option value="0">Free</option>
+                            <option value="1">Có phí</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <nav class="grid-page" th:if="${totalPages > 1}">
+            <ul class="flex">
+                <li th:class="${liveshows.hasPrevious() ? '' :'disabled'}">
+                    <a class="arrow" th:href="@{/home/liveshow?page=__${liveshows.number-1}__}">
+                        <span>&laquo;</span>
+                    </a>
+                </li>
+                <li th:each="page : ${#numbers.sequence(0,totalPages - 1)}"
+                    th:class="${liveshows.number == page ? 'active' : ''}" >
+                    <a class="page__item"
+                       th:href="@{/home/liveshow?page=__${page}__}"
+                       th:text="${page + 1}"></a>
+                </li>
+                <li th:class="${liveshows.hasNext() ? '' : 'disabled'}">
+                    <a class="arrow" th:href="@{/home/liveshow?page=__${liveshows.number+1}__}">
+                        <span>&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+</section>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="950faedd-97b0-4fba-adf8-a8c8a697fba0" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/CSS/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/UserManagement.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/changePW.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/giaidau.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/hoithao.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/liveshow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/myTicket.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/qlDLGD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/qlDLHT.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/qlDLLS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/qlGD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/qlHT.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/qlLS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/searchHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/tickGD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/tickHT.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/tickLS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/updateGD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/updateHT.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/updateLS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home/updateProfileUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/khiemdeptrai12/TicketBookByJava.git&quot;,
+    &quot;accountId&quot;: &quot;3b62753b-a2b0-46e0-b2c3-26d5fc21d8df&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2i3IfKUSulzxO2wf7CHKoP41ab3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "Application.projectSpring.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/LTUDJava/TicketBookByJava",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "vcs.Git"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\LTUDJava\Project\src\main\resources\templates\home" />
+      <recent name="C:\LTUDJava\Project\src\main\resources\templates\user" />
+      <recent name="C:\LTUDJava\Project\src\main\resources\static\CSSS" />
+      <recent name="C:\LTUDJava\Project\static\images" />
+      <recent name="C:\LTUDJava\Project\src\main\resources\static" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="projectSpring" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.Project.ProjectApplication" />
+      <module name="Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="950faedd-97b0-4fba-adf8-a8c8a697fba0" name="Changes" comment="" />
+      <created>1718712935711</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718712935711</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1720367935774</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720367935774</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1720367950061</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720367950061</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1720368373472</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720368373472</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1720369095070</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720369095070</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1720369114008</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720369114008</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="github/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Project/controller/LoginController.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Project/controller/LoginController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Project/controller/HomeController.java</url>
+          <line>213</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.LinkedHashMap$Entry" memberName="value" />
+        <PinnedItemInfo parentTag="java.util.Optional" memberName="value" />
+        <PinnedItemInfo parentTag="java.util.LinkedHashMap$Entry" memberName="key" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

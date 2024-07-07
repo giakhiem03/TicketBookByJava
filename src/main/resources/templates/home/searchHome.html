@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .grid-page {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin-top: 30px ;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .arrow {
+            font-size: 30px;
+            color: #ef4444;
+            margin: 0 6px;
+        }
+        .page__item {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #ef4444;
+            margin: 0 4px;
+            color: #fff;
+        }
+        .page__item:hover,
+            .arrow:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <main class="p-4">
+        <section class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="col-span-2">
+                    <img th:src="@{/images/bknew.jpg}"
+                         alt="Featured Event"
+                         class="w-full h-auto rounded"
+                    />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img style="height: 100%;"
+                         th:src="@{/images/new2.jpg}"
+                         alt="Event 1"
+                         class="w-full h-auto rounded"
+                    />
+                    <img
+                            style="height: 100%;"
+                            th:src="@{/images/new11.jpg}"
+                            alt="Event 2"
+                            class="w-full h-auto rounded"
+                    />
+                    <img
+                            style="height: 100%;"
+                            th:src="@{/images/new12.jpg}"
+                            alt="Event 3"
+                            class="w-full h-auto rounded"
+                    />
+                    <img style="height: 100%;"
+                         th:src="@{/images/new14.png}"
+                         alt="Event 4"
+                         class="w-full h-auto rounded"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8" >
+            <img
+                    th:src="@{/images/imageMain.png}"
+                    alt="Welcome Banner"
+                    class="w-full h-auto rounded"
+            />
+        </section>
+
+        <section>
+            <h2 class="text-xl mb-4">Sự kiện mới nhất</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div style="background:#fff" class="text-black rounded p-4" th:each="item : ${hoithaos}">
+                    <img
+                            th:src="@{/images/{image}(image=${item.image})}"
+                            alt="Event Image"
+                            class="w-full h-auto rounded mb-4"
+                    />
+                    <span>Tiêu đề: </span>
+                    <h3 class="text-lg font-bold mb-2" th:text="${item.title}"></h3>
+                    <span >Chi tiết: </span>
+                    <p class="text-sm mb-2" th:text="${item.detail}"></p>
+                    <span >Số ghế: </span>
+                    <p class="text-sm mb-2" th:text="${item.seatNumber}"></p>
+                    <span >Địa chỉ: </span>
+                    <p class="text-sm mb-2" th:text="${item.address}"></p>
+                    <div class="flex justify-between items-center" >
+                        <div>
+                            <div th:if="${item.price}>0">
+                                <span  class="text-red-500 font-bold" th:text="${item.price}"></span>
+                            </div>
+                            <div th:unless="${item.price>0}">
+                                <span  class="text-red-500 font-bold" >Free</span>
+                            </div>
+                        </div>
+                        <a th:href="@{/home/tick/{id}(id=${item.id})}"  class="bg-red-500 text-white px-4 py-2 rounded">
+                            Tick
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="grid-page" th:if="${totalPages > 1}">
+            <ul class="flex">
+                <li th:class="${hoithaos.hasPrevious() ? '' :'disabled'}">
+                    <a class="arrow" th:href="@{/home/searchHome?title=__${title}__&pageNo=__${hoithaos.number-1}__}">
+                        <span>&laquo;</span>
+                    </a>
+                </li>
+                <li th:each="page : ${#numbers.sequence(0,totalPages - 1)}"
+                    th:class="${hoithaos.number == page ? 'active' : ''}" >
+                    <a class="page__item"
+                       th:href="@{/home/searchHome?title=__${title}__&pageNo=__${page}__}"
+                       th:text="${page + 1}"></a>
+                </li>
+                <li th:class="${hoithaos.hasNext() ? '' : 'disabled'}">
+                    <a class="arrow" th:href="@{/home/searchHome?title=__${title}__&pageNo=__${hoithaos.number+1}__}">
+                        <span>&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+</section>
+</body>
+</html>

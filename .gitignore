@@ -35,3 +35,4 @@ build/
 # Project exclude paths
 /src/main/resources/static/CSS/
 /src/main/resources/templates/home/
+/src/main/resources/templates/home/

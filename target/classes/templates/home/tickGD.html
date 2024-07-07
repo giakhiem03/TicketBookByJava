@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="max-w-lg mx-auto bg-white p-4 rounded-lg shadow-md dark:bg-zinc-800" >
+        <div class="flex">
+            <img
+                    th:src="@{/images/{image}(image=${giaidau.image})}"
+                    alt="Event Image"
+                    class="w-1/2 rounded-lg"
+            />
+            <div class="ml-4 w-1/2">
+                <h2 class="text-xl font-bold text-pink-600 dark:text-pink-400" th:text="${giaidau.title}"></h2>
+                <div>
+                    <div th:if="${giaidau.price}>0">
+                        <p class="text-red-500 font-bold" th:text="${giaidau.price}"></p>
+                    </div>
+                    <div th:unless="${giaidau.price>0}">
+                        <p class="text-red-500 font-bold" th:text="Free"></p>
+                    </div>
+                </div>
+
+                <p style="wra" class="text-zinc-700 dark:text-zinc-300" th:text="${giaidau.detail}"></p>
+                <div class="mt-2 text-zinc-600 dark:text-zinc-400">
+                    <p>
+                        <span class="inline-block w-6">📍</span> <span th:text="${giaidau.address}"></span>
+                    </p>
+                    <p><span class="inline-block w-6">👥</span> <span th:text="${giaidau.seatNumber}"></span></p>
+                    <p><span class="inline-block w-6">📅</span> <span th:text="${giaidau.time}"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <form th:action="@{/home/tickGD}" method="post" th:object="${user_giaidau}" class="space-y-2">
+                <input type="hidden" name="id_giaiDau" th:value="${giaidau.id}">
+                <div>
+                    <label for="studentCode" class="block text-zinc-700 dark:text-zinc-300">MSSV:</label>
+                    <input  th:field="*{studentCode}"
+                            type="text"
+                            id="studentCode"
+                            style="color:#333"
+                            class="w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                    />
+                    <p th:if="${#fields.hasErrors('studentCode')}" th:errors="*{studentCode}" class="text-red-500"></p>
+                </div>
+                <div class="flex space-x-2">
+                    <div class="flex-1">
+                        <label for="familyName" class="block text-zinc-700 dark:text-zinc-300"
+                        >Họ đệm:</label
+                        >
+                        <input th:field="*{familyName}"
+                               type="text"
+                               id="familyName"
+                               style="color:#333"
+                               class="w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                        />
+                        <p th:if="${#fields.hasErrors('familyName')}" th:errors="*{familyName}" class="text-red-500"></p>
+                    </div>
+                    <div class="flex-1">
+                        <label for="lastName" class="block text-zinc-700 dark:text-zinc-300"
+                        >Tên:</label
+                        >
+                        <input
+                                th:field="*{lastName}"
+                                type="text"
+                                id="lastName"
+                                style="color:#333"
+                                class=" w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                        />
+                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-red-500"></p>
+                    </div>
+                </div>
+                <div>
+                    <label for="school" class="block text-zinc-700 dark:text-zinc-300"
+                    >Trường:</label
+                    >
+                    <input
+                            th:field="*{school}"
+                            type="text"
+                            id="school"
+                            style="color:#333"
+                            class="text-dark w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                    />
+                    <p th:if="${#fields.hasErrors('school')}" th:errors="*{school}" class="text-red-500"></p>
+                </div>
+                <div>
+                    <label for="Number_Phone" class="block text-zinc-700 dark:text-zinc-300">SĐT:</label
+                    >
+                    <input
+                            th:field="*{Number_Phone}"
+                            type="text"
+                            id="Number_Phone"
+                            style="color:#333"
+                            class="text-dark w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                    />
+                    <p th:if="${#fields.hasErrors('Number_Phone')}" th:errors="*{Number_Phone}" class="text-red-500"></p>
+                </div>
+                <div>
+                    <label for="SoThanhVien" class="block text-zinc-700 dark:text-zinc-300"
+                    >Số thành viên:</label
+                    >
+                    <input
+                            th:field="*{SoThanhVien}"
+                            type="text"
+                            id="SoThanhVien"
+                            style="color:#333"
+                            class="text-dark w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                    />
+                    <p th:if="${#fields.hasErrors('SoThanhVien')}" th:errors="*{SoThanhVien}" class="text-red-500"></p>
+
+                </div>
+                <div class="flex space-x-2">
+                    <div class="flex-1">
+                        <label for="faculty" class="block text-zinc-700 dark:text-zinc-300">Khoa:</label>
+                        <input
+                                th:field="*{faculty}"
+                                type="text"
+                                id="faculty"
+                                style="color:#333"
+                                class="w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 "
+                        />
+                        <p th:if="${#fields.hasErrors('faculty')}" th:errors="*{faculty}" class="text-red-500"></p>
+                    </div>
+                    <div class="flex-1">
+                        <label for="myClass" class="block text-zinc-700 dark:text-zinc-300">Lớp:</label>
+                        <input
+                                th:field="*{myClass}"
+                                type="text"
+                                id="myClass"
+                                style="color:#333"
+                                class="w-full p-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600"
+                        />
+                        <p th:if="${#fields.hasErrors('myClass')}" th:errors="*{myClass}" class="text-red-500"></p>
+                    </div>
+                </div>
+                <div class="mt-4 text-zinc-700 dark:text-zinc-300">
+                    <p class="font-bold text-pink-600 dark:text-pink-400">Lưu ý!</p>
+                    <ul class="list-disc list-inside">
+                        <li>Mang theo thẻ sinh viên.</li>
+                        <li>Chỉ nhập thông tin của đội trưởng.</li>
+                    </ul>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <a th:href="@{/home/giaidau}"
+                            class="px-4 py-2 bg-zinc-300 text-zinc-700 rounded-lg mr-2 dark:bg-zinc-700 " >
+                        Cancel
+                    </a>
+                    <button type="submit"
+                            class="px-4 py-2 bg-pink-600 text-white rounded-lg" >
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>
